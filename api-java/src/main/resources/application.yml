@@ -1,0 +1,77 @@
+postgreSQL-app-name: keylogger
+
+quarkus:
+  banner:
+    path: banner.txt
+  # datasource configuration
+  datasource:
+    db-kind: postgresql
+    username: postgres
+    password: admin
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/keylogger?ApplicationName=${postgreSQL-app-name}
+  hibernate-orm:
+    database:
+      # drop and create the database at startup (use `update` to only update the schema)
+      generation: update #drop-and-create
+  http:
+    cors: true
+    port: 8081
+    test-port: 8082
+    auth:
+      policy:
+        role-policy-admin:
+          roles-allowed: ADMIN
+      permission:
+        basic-or-bearer:
+          policy: authenticated
+        #remove autenticação dos métodos contidos no paths
+        public:
+          paths: ${quarkus.http.root-path}/login,${quarkus.http.root-path}/user
+          policy: permit
+        #adiciona permissão somente para gravar o keylogger
+        role-keylogger-post:
+          paths: ${quarkus.http.root-path}/keylogger
+          policy: permit
+          methods: POST
+        #adiciona autenticação de ADMIN pois a regra role-admin não funcionou, da erro de 403
+        role-keylogger:
+          paths: ${quarkus.http.root-path}/keylogger
+          policy: role-policy-admin
+          methods: GET,PUT,DELETE
+        #adiciona autenticação de ADMIN para todos os métodos depois de /api/...
+        role-admin:
+          paths: ${quarkus.http.root-path}/*
+          policy: role-policy-admin
+    resteasy:
+      gzip:
+        enabled: true
+        max-input: 10M
+    smallrye-jwt:
+      enabled: true
+    root-path: /api
+    #host: 192.168.100.167 #teste para aceitar requisições de outras máquinas dentro da rede
+  flyway:
+    migrate-at-start: true
+    baseline-on-migrate: true
+    locations: db/migration
+
+#Informacoes locais do jwt
+jwt-keylogger:
+  duration: 3600
+  password:
+    iteration: 33
+    keylength: 256
+    secret: keylogger
+  publickey-location: /jwt-key/publickey.pem
+  privatekey-location: /jwt-key/privatekey.pem
+
+keylogger:
+  dns: keylogger.jwt
+
+mp:
+  jwt:
+    verify:
+      issuer: ${keylogger.dns}
+      publickey:
+        location: ${jwt-keylogger.publickey-location}

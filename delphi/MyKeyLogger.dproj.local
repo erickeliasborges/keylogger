@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2022/03/09 21:40:01.000.622,=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/04/20 08:14:08.000.607,=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/04/20 19:46:32.000.956,=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/04/20 19:46:58.000.137,=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/10/17 22:53:35.000.981,=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/10/17 23:12:35.000.953,C:\Users\Administrador\Desktop\keylogger-delphi\KeyLogger.dfm=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2022/10/17 23:12:35.000.953,C:\Users\Administrador\Desktop\keylogger-delphi\KeyLogger.pas=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2022/10/17 23:57:28.000.029,C:\Users\Administrador\Desktop\keylogger-delphi\MyKeyLogger.dproj=C:\Users\Administrador\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2022/10/18 21:16:27.000.350,=C:\Users\Administrador\Desktop\keylogger-delphi\Unit1.pas</Transaction>
+    <Transaction>2022/10/18 21:17:04.000.262,C:\Users\Administrador\Desktop\keylogger-delphi\ArquivoINI\ArquivoINI.pas=C:\Users\Administrador\Desktop\keylogger-delphi\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

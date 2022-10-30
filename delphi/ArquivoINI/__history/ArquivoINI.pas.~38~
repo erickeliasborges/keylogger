@@ -1,0 +1,67 @@
+unit ArquivoINI;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  IniFiles;
+
+type
+  TArquivoINI = class
+  private
+    FArquivoINI: TIniFile;
+    procedure CriarCarregarINI;
+    procedure CarregarVariaveisDoINI;
+    procedure CriarVariaveisNoINICasoNaoExista;
+  published
+    function GetUrlAPIDoINI: String;
+  public
+    constructor Create;
+    destructor Destroy; override;
+  end;
+
+const
+  BLOCO_KEY_LOGGER = 'KEY_LOGGER';
+
+  URL_API_DEFAULT = 'http://localhost:8081/api/keylogger';
+
+implementation
+
+{ TArquivoINI }
+
+constructor TArquivoINI.Create;
+begin
+  CriarCarregarINI();
+  CarregarVariaveisDoINI();
+end;
+
+destructor TArquivoINI.Destroy;
+begin
+  FArquivoINI.Free;
+  inherited;
+end;
+
+procedure TArquivoINI.CriarCarregarINI;
+begin
+  FArquivoINI := TIniFile.Create(ExtractFileDir(GetCurrentDir()) + '\keylogger.ini');
+  CriarVariaveisNoINICasoNaoExista();
+end;
+
+procedure TArquivoINI.CriarVariaveisNoINICasoNaoExista;
+begin
+  if (GetUrlAPIDoINI() = '') then
+    FArquivoINI.WriteString(BLOCO_KEY_LOGGER, 'URL_API', URL_API_DEFAULT);
+end;
+
+procedure TArquivoINI.CarregarVariaveisDoINI;
+begin
+  FUrlAPI := GetUrlAPIDoINI();
+end;
+
+function TArquivoINI.GetUrlAPIDoINI: String;
+begin
+  Result := FArquivoINI.ReadString(BLOCO_KEY_LOGGER, 'URL_API', '');
+end;
+
+end.
