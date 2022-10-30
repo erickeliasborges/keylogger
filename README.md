@@ -3,7 +3,7 @@
 ## :memo: Descrição
 Keylogger desenvolvido em Delphi, tem exemplos de como fazer o registro das teclas, pegar a descrição e o print da tela atual do usuário (cada vez que troca). Criado uma API em java utilizando o framework Quarkus, na qual recebe requisições a cada tempo (definido no componente Timer do Delphi) dos logs registrados no computador, fazendo a gravação em uma base de dados PostgreSQL, armazenando data e hora, e informações da máquina que enviou a requisição, como o endereço IP.
 
-## :memo: Informações importantes
+## :warning: Informações importantes
 Este projeto não foi criado para invadir outros usuários, isso é crime, foi criado com intuito estudantil, para saber como funciona na prática um Keylogger, nesse projeto, a aplicação em Delphi não é escondida no computador, fica uma tela visível para o usuário verificar como está sendo gravados os logs, os prints são armazenados em uma pasta no computador, somente para teste, não é enviado via http, somente o log. Nenhuma ação maliciosa é feita no computador.
 
 ## :wrench: Versões utilizadas
